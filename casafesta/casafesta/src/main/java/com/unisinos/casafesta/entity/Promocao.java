@@ -53,14 +53,6 @@ public class Promocao {
         this.festas = festas;
     }
 
-    public List<Festa> getFestas() {
-        return festas;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
     public int getDesconto() {
         return desconto;
     }
@@ -71,6 +63,14 @@ public class Promocao {
 
     public LocalDate getInicioVigencia() {
         return inicioVigencia;
+    }
+
+    public List<Festa> getFestas() {
+        return festas;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

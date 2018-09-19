@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<bindings version="2.1" xmlns="http://java.sun.com/xml/ns/jaxb">
+  <!--
+
+Este arquivo foi gerado pela Arquitetura JavaTM para Implementação de Referência (JAXB) de Bind XML, v2.3.0 
+Consulte <a href="https://javaee.github.io/jaxb-v2/">https://javaee.github.io/jaxb-v2/</a> 
+Todas as modificações neste arquivo serão perdidas após a recompilação do esquema de origem. 
+Gerado em: 2018.09.19 às 06:02:11 PM BRT 
+
+  -->
+  <bindings scd="x-schema::tns" xmlns:tns="/jaxb/gen">
+    <schemaBindings map="false">
+      <package name="com.unisinos.casafesta.xml"/>
+    </schemaBindings>
+    <bindings scd="~tns:Promocao">
+      <class ref="com.unisinos.casafesta.xml.Promocao"/>
+    </bindings>
+    <bindings scd="~tns:Festa">
+      <class ref="com.unisinos.casafesta.xml.Festa"/>
+    </bindings>
+    <bindings scd="~tns:Ingresso">
+      <class ref="com.unisinos.casafesta.xml.Ingresso"/>
+    </bindings>
+    <bindings scd="~tns:Integrante">
+      <class ref="com.unisinos.casafesta.xml.Integrante"/>
+    </bindings>
+  </bindings>
+</bindings>
+

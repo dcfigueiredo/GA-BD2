@@ -2,19 +2,23 @@ package com.unisinos.casafesta;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.unisinos.casafesta.dto.IntegranteDto;
 import com.unisinos.casafesta.entity.Festa;
 import com.unisinos.casafesta.entity.Ingresso;
 import com.unisinos.casafesta.entity.Integrante;
 import com.unisinos.casafesta.entity.Promocao;
 import com.unisinos.casafesta.mapper.FestaDtoMapper;
-import com.unisinos.casafesta.mapper.IngressoDtoMapper;
+import com.unisinos.casafesta.mapper.FestaMapper;
 import com.unisinos.casafesta.mapper.IntegranteDtoMapper;
 import com.unisinos.casafesta.mapper.PromocoesDtoMapper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.namespace.QName;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -40,13 +44,9 @@ public class Main {
 //                })
                 .create();
 
-        SessionFactory sessionFactory = new Configuration().configure()
-                .buildSessionFactory();
-        try {
+        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
             persist(sessionFactory);
             load(sessionFactory);
-        } finally {
-            sessionFactory.close();
         }
     }
 
@@ -112,6 +112,25 @@ public class Main {
         });
         convertToJson(festas);
         session.close();
+        xml(festas);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void xml(List<Festa> festas) {
+        System.out.println("\n\n-- loading printing xml --");
+        try {
+            JAXBContext context = JAXBContext.newInstance(com.unisinos.casafesta.xml.Festa.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            QName qName = new QName("com.unisinos.casafesta.xml", "festas");
+            for (Festa festa : festas) {
+                JAXBElement<com.unisinos.casafesta.xml.Festa> root = new JAXBElement<>(qName, com.unisinos.casafesta.xml.Festa.class, FestaMapper.from(festa));
+                marshaller.marshal(root, System.out);
+                System.out.print("\n\n\n");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void convertToJson(List<Festa> festas) {

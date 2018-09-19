@@ -77,6 +77,10 @@ public class Festa {
         this.ingressos = ingressos;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Id: " + id + "; Nome: " + nome + "; Estilo: " + estilo + "; Data: " + data;

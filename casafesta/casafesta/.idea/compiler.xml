@@ -9,5 +9,8 @@
         <module name="casa-festa" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="casa-festa" target="8" />
+    </bytecodeTargetLevel>
   </component>
 </project>
