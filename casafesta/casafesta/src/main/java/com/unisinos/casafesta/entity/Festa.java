@@ -21,7 +21,7 @@ public class Festa {
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Promocao> promocoes = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "festa")
     private List<Ingresso> ingressos = new ArrayList<>();
 
     public Festa() {

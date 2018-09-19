@@ -30,6 +30,10 @@ public class Integrante {
         this.dataNascimento = dataNascimento;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
@@ -44,6 +48,10 @@ public class Integrante {
 
     public void setIngressos(List<Ingresso> ingressos) {
         this.ingressos = ingressos;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getNome() {

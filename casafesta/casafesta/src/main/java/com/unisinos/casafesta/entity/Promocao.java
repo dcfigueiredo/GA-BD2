@@ -33,6 +33,10 @@ public class Promocao {
         this.finalVigencia = finalVigencia;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setDesconto(int desconto) {
         this.desconto = desconto;
     }
@@ -43,6 +47,18 @@ public class Promocao {
 
     public void setFinalVigencia(LocalDate finalVigencia) {
         this.finalVigencia = finalVigencia;
+    }
+
+    public void setFestas(List<Festa> festas) {
+        this.festas = festas;
+    }
+
+    public List<Festa> getFestas() {
+        return festas;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public int getDesconto() {

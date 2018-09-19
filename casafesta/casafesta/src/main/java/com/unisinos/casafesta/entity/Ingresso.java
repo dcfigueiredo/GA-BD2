@@ -27,6 +27,10 @@ public class Ingresso {
         this.preco = preco;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
@@ -41,6 +45,10 @@ public class Ingresso {
 
     public void setIntegrante(Integrante integrante) {
         this.integrante = integrante;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public Double getPreco() {
