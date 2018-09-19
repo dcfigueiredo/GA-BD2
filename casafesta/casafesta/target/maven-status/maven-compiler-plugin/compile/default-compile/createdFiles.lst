@@ -1,0 +1,17 @@
+com\unisinos\casafesta\entity\Promocao.class
+com\unisinos\casafesta\Main.class
+com\unisinos\casafesta\xml\Promocao.class
+com\unisinos\casafesta\mapper\IngressoMapper.class
+com\unisinos\casafesta\mapper\PromocaoMapper.class
+com\unisinos\casafesta\entity\Integrante.class
+com\unisinos\casafesta\xml\Ingresso.class
+com\unisinos\casafesta\xml\Festa.class
+com\unisinos\casafesta\entity\Ingresso.class
+com\unisinos\casafesta\entity\Festa.class
+com\unisinos\casafesta\xml\package-info.class
+com\unisinos\casafesta\converter\DateConverter.class
+com\unisinos\casafesta\converter\LocalDateAttributeConverter.class
+com\unisinos\casafesta\mapper\IntegranteMapper.class
+com\unisinos\casafesta\xml\Integrante.class
+com\unisinos\casafesta\mapper\FestaMapper.class
+com\unisinos\casafesta\xml\ObjectFactory.class

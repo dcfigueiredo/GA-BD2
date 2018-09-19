@@ -43,6 +43,10 @@ public class Ingresso {
         this.integrante = integrante;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Double getPreco() {
         return preco;
     }
@@ -57,6 +61,10 @@ public class Ingresso {
 
     public Integrante getIntegrante() {
         return integrante;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

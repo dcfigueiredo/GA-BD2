@@ -45,6 +45,14 @@ public class Promocao {
         this.finalVigencia = finalVigencia;
     }
 
+    public void setFestas(List<Festa> festas) {
+        this.festas = festas;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int getDesconto() {
         return desconto;
     }
@@ -55,6 +63,14 @@ public class Promocao {
 
     public LocalDate getInicioVigencia() {
         return inicioVigencia;
+    }
+
+    public List<Festa> getFestas() {
+        return festas;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override

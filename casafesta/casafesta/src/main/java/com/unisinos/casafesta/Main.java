@@ -4,10 +4,16 @@ import com.unisinos.casafesta.entity.Festa;
 import com.unisinos.casafesta.entity.Ingresso;
 import com.unisinos.casafesta.entity.Integrante;
 import com.unisinos.casafesta.entity.Promocao;
+import com.unisinos.casafesta.mapper.FestaMapper;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
+import javax.xml.namespace.QName;
 import java.util.List;
 
 import static java.time.LocalDate.now;
@@ -15,13 +21,9 @@ import static java.time.LocalDate.now;
 public class Main {
 
     public static void main(String[] args) {
-        SessionFactory sessionFactory = new Configuration().configure()
-                .buildSessionFactory();
-        try {
+        try (SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory()) {
             persist(sessionFactory);
             load(sessionFactory);
-        } finally {
-            sessionFactory.close();
         }
     }
 
@@ -76,7 +78,6 @@ public class Main {
                     .map(p -> "\tPromoção - " + p)
                     .forEach(System.out::println);
             x.getIngressos()
-                    .stream()
                     .forEach(p -> {
                         System.out.println("\tIngresso - " + p);
                         if (p.getIntegrante() != null) {
@@ -86,5 +87,24 @@ public class Main {
             System.out.println();
         });
         session.close();
+        xml(festas);
+    }
+
+    @SuppressWarnings("unchecked")
+    private static void xml(List<Festa> festas) {
+        System.out.println("\n\n-- loading printing xml --");
+        try {
+            JAXBContext context = JAXBContext.newInstance(com.unisinos.casafesta.xml.Festa.class);
+            Marshaller marshaller = context.createMarshaller();
+            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+            QName qName = new QName("com.unisinos.casafesta.xml", "festas");
+            for (Festa festa : festas) {
+                JAXBElement<com.unisinos.casafesta.xml.Festa> root = new JAXBElement<>(qName, com.unisinos.casafesta.xml.Festa.class, FestaMapper.from(festa));
+                marshaller.marshal(root, System.out);
+                System.out.print("\n\n\n");
+            }
+        } catch (JAXBException e) {
+            e.printStackTrace();
+        }
     }
 }

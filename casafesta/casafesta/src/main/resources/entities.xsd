@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="/jaxb/gen"
+        xmlns:me="/jaxb/gen"
+        elementFormDefault="qualified">
+
+    <element name="promocao" type="me:Promocao"/>
+    <element name="festa" type="me:Festa"/>
+    <element name="ingresso" type="me:Ingresso"/>
+    <element name="integrante" type="me:Integrante"/>
+
+    <complexType name="Promocao">
+        <sequence>
+            <element name="id" type="long"/>
+            <element name="porcentagemDesconto" type="long"/>
+            <element name="dataFinalVigencia" type="dateTime"/>
+            <element name="dataInicioVigencia" type="dateTime"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Festa">
+        <sequence>
+            <element name="id" type="long"/>
+            <element name="nome" type="string"/>
+            <element name="estilo" type="string"/>
+            <element name="data" type="dateTime"/>
+            <element name="promocoes" type="me:Promocao" minOccurs="0" maxOccurs="unbounded"/>
+            <element name="ingresso" type="me:Ingresso" minOccurs="0" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Ingresso">
+        <sequence>
+            <element name="id" type="long"/>
+            <element name="categoria" type="string"/>
+            <element name="preco" type="double"/>
+            <element name="integrante" type="me:Integrante" minOccurs="0"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="Integrante">
+        <sequence>
+            <element name="id" type="long"/>
+            <element name="telefone" type="string"/>
+            <element name="dataNascimento" type="dateTime"/>
+            <element name="nome" type="string"/>
+        </sequence>
+    </complexType>
+</schema>

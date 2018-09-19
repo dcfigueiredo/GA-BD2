@@ -46,6 +46,10 @@ public class Integrante {
         this.ingressos = ingressos;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -60,6 +64,10 @@ public class Integrante {
 
     public List<Ingresso> getIngressos() {
         return ingressos;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     @Override
